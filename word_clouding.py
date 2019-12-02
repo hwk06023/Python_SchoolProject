@@ -24,14 +24,14 @@ def wordclouding(text):
     tokens  = word_tokenize(texts_noun)
     freqtxt = pd.Series(dict(FreqDist(tokens))).sort_values(ascending=False)
     
-    mask = np.array(Image.open("image/icon.png"))
+    mask = np.array(Image.open("./image/icon.png"))
 
     wcloud = WordCloud(
         font_path='/Library/Fonts/NanumSquareRegular.ttf',
+        mask=mask,
         width = 500,
         height = 500,
-        background_color='white',
-        mask=mask
+        background_color='white'
     )
     wcloud = wcloud.generate_from_frequencies(freqtxt)
 
